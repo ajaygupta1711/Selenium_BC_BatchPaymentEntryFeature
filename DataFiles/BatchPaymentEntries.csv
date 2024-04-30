@@ -1,13 +1,14 @@
 Tag,Source,Type,Account #,Invoice #,Agency Code,AB Statement #,DB Commissions,Amount,Check/Ref #,Description,Payment Instrument
-0,Branch,Payment,3398670,,,,,100,9988776655,Payment on account level,Check
-1,,Payment,,7000127051,,,,200,9988776656,Payment on invoice level,Cash
-2,,Payment,,,C0010,,,300,9988776657,Payment on agency level,Check
-3,,Payment,,,C0010,7000076276,,400,9988776658,Payment on agency statement level,Cash
-4,,Payment,,,C0010,,TRUE,500,9988776659,Payment on DB Commission level,Check
-5,,Suspense,,,,,,600,9988776660,Payment on Suspense level,Cash
-6,,Split,,,,,,700,9988776661,,Check
-6.1,,Payment,3398670,,,,,700,,Payment on Split Account level,
-6.2,,Payment,,7000127051,,,,140,,Payment on Split Invoice level,
-6.3,,Payment,,,C0010,,,140,,Payment on Split Agency level,
-6.4,,Payment,,,C0010,7000076276,,140,,Payment on Split Agency Statement level,
-6.5,,Payment,,,C0010,,TRUE,140,,Payment on Split DB Commissions level,
+0,Branch,Payment,3398670,,,,,100,9988776662,Payment on account level,Check
+1,,Payment,,7000127051,,,,200,9988776663,Payment on invoice level,Cash
+2,,Payment,,,C0010,,,300,9988776664,Payment on agency level,Check
+3,,Payment,,,C0010,7000076276,,400,9988776665,Payment on agency statement level,Cash
+4,,Payment,,,C0004,,TRUE,500,9988776666,Payment on DB Commission level,Check
+5,,Suspense,,,,,,600,9988776667,Payment on Suspense level,Cash
+6,,Split,,,,,,900,9988776668,,Check
+6.1,,Payment,3398670,,,,,150,,Payment on Split Account level,
+6.2,,Payment,,7000127051,,,,150,,Payment on Split Invoice level,
+6.3,,Payment,,,C0010,,,150,,Payment on Split Agency level,
+6.4,,Payment,,,C0010,7000076276,,150,,Payment on Split Agency Statement level,
+6.5,,Payment,,,C0010,,TRUE,150,,Payment on Split DB Commissions level,
+6.6,,Suspense,,,,,,150,,Payment on Split Suspense level,

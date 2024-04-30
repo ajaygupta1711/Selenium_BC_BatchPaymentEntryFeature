@@ -40,7 +40,7 @@ public class PaymentEntryWizard extends BaseBillingTest {
 		System.out.println("\n 10. Enter payemnt details on split account level");
 		newpayment.enterDataOnSplitAccountlevel("BatchPaymentEntries", "6.1");
 		
- /* 	System.out.println("\n 11. Enter payemnt details on split invoice level");
+		System.out.println("\n 11. Enter payemnt details on split invoice level");
 		newpayment.enterDataOnSplitInvoicelevel("BatchPaymentEntries", "6.2");
 		
 		System.out.println("\n 12. Enter payemnt details on split Agency level");
@@ -50,31 +50,45 @@ public class PaymentEntryWizard extends BaseBillingTest {
 		newpayment.enterDataOnSplitAgencyStatementlevel("BatchPaymentEntries", "6.4");
 		
 		System.out.println("\n 14. Enter payemnt details on split Agency DB commissions level");
-		newpayment.enterDataOnSplitDBCommissionslevel("BatchPaymentEntries", "6.5"); */
+		newpayment.enterDataOnSplitDBCommissionslevel("BatchPaymentEntries", "6.5");
 		
-		System.out.println("\n 15. Enter the Total Amount in Batch Amount and Save the Batch Number");
+		System.out.println("\n 15. Enter payemnt details on split suspense level");
+		newpayment.enterDataOnSplitSuspenselevel("BatchPaymentEntries", "6.6");
+		
+		System.out.println("\n 16. Enter the Total Amount in Batch Amount and Save the Batch Number");
 		newpayment.enterTotalAmountInBatchAmount();
-		newpayment.batchNumber();
+		String expectedBatchNumber = newpayment.batchNumber();
 	
-		System.out.println("\n 16. Click on Post Batch button");
+		System.out.println("\n 17. Click on Next and Post Batch buttons and Save the CheckRef Numner");
 		newpayment.clickNextBatchBtn();
+		String expectedCheckRefNumber = newpayment.checkRefNumber();
 		newpayment.clickPostbatchBtn();
 		
-		System.out.println("\n 17. Run the PostSurePathBatch job");
+		System.out.println("\n 18. Run the PostSurePathBatch job");
 		newpayment.navigateBatchProcess();
 		newpayment.clickRunBtn();
 		
-		System.out.println("\n 18. Navigate to the Desktop screen");
+		System.out.println("\n 19. Navigate to the Desktop screen");
 		newpayment.clickActionBtn();
 		newpayment.clickreturnToBillingCenter(); 
 		
-		System.out.println("\n 19. Verify the Batch Number of posted payments on account level");
-		newpayment.VerifyBatchNumberAccountLevel();
+		System.out.println("\n 20. Verify the Batch Number of posted payments on account level");
+		newpayment.navigatePaymentsScreenOnAccountLevel("BatchPaymentEntries", "0");
+		newpayment.validateBatchNumberInPaymentsTable(expectedBatchNumber);
 		
-		System.out.println("\n 20. Verify the Batch Number and Check/Ref of posted payments on agency level");
-		newpayment.VerifyBatchAndChkNumberAgencyLevel(); 
+		System.out.println("\n 21. Verify the Batch Number of posted payments on agency level");
+		newpayment.navigateExecutedPaymentsScreenOnAgencyLevel("BatchPaymentEntries", "2");
+		newpayment.validateBatchNumberInExecutedPaymentsTable(expectedBatchNumber); 
 		
-		//System.out.println("\n 21. Logout from BillingCenter");
-		//newpayment.logout("qa1_bc");
+		System.out.println("\n 22. Verify the Check/Ref of posted payments on agency level");
+		newpayment.navigateTransactionsScreenOnAgencyLevel("BatchPaymentEntries", "4");
+		newpayment.validateCheckRefNumberInTransactionTable(expectedCheckRefNumber);
+		
+		System.out.println("\n 23. Verify the Batch Number of posted payments on suspense level");
+		newpayment.navigateSuspensePaymentsScreenOnDesktopLevel();
+		newpayment.validateBatchNumberInSuspensePaymentsTable(expectedBatchNumber);
+		
+		System.out.println("\n 24. Logout from BillingCenter");
+		newpayment.logout("BillingCenter");
 		}
 }
